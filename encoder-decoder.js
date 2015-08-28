@@ -10,7 +10,7 @@ function decodeBIGIP(cookieValue) {
     encodedIP = new Number(cookieValue.split('.')[0]);
 
     /*
-    * Where the format of the IP is a.b.c.d, the calulation is:
+    * Where the format of the IP is a.b.c.d, the calculation is:
     * a = (cookieValue % 256)
     * b = ((cookieValue - a) / 256) % 256
     * c = (((cookieValue - a - b) / 256) / 256) % 256
@@ -53,14 +53,14 @@ function encodeBIGIP(ip) {
     return encodedIP;
 }
 
-function processEncode(evt) {
-    var bigip = evt.srcElement.value;
+function processEncode() {
+    var bigip = document.getElementById('bigip').value;
     var errorNode = document.getElementById('error');
     var resultNode = document.getElementById('result');
     var encodedIP;
 
     try {
-        encodedIP = encodeBIGip(bigip);
+        encodedIP = encodeBIGIP(bigip);
 
         errorNode.className = 'hide';
         resultNode.innerHTML = '';
@@ -72,9 +72,9 @@ function processEncode(evt) {
     }
 }
 
-function processDecode(evt) {
-    var bigip = evt.srcElement.value;
-    var decodedIP = decodeBIGip(bigip);
+function processDecode() {
+    var bigip = document.getElementById('bigip').value;
+    var decodedIP = decodeBIGIP(bigip);
     var errorNode = document.getElementById('error');
     var resultNode = document.getElementById('result');
 
